@@ -16,8 +16,14 @@ class Model(models.Model):
 
 
 class Series(models.Model):
-    name = models.CharField(max_length=100)
-    model = models.ForeignKey(Model, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100, null=True)
+    model = models.ForeignKey(Model, on_delete=models.CASCADE, null=True)
+    engine = models.CharField(max_length=100, null=True)
+    hp = models.IntegerField(null=True)
+    nm = models.IntegerField(null=True)
+    series = models.ForeignKey(to=Brand, on_delete=models.CASCADE, null=True)
+
+
 
     def __str__(self):
         return self.name
